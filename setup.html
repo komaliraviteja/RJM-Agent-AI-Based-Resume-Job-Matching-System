@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Setup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { margin: 0; height: 100vh; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; justify-content: center; align-items: center; color: #333; }
+        
+        .card { 
+            background: #fff; 
+            border-radius: 16px; 
+            padding: 40px; 
+            width: 480px; 
+            text-align: center; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25); 
+        }
+
+        h2 { margin-top: 0; color: #4338ca; margin-bottom: 10px; }
+        p { color: #666; font-size: 14px; margin-bottom: 30px; }
+
+        .api-section {
+            text-align: left;
+            margin-bottom: 25px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 13px; color: #1e293b; }
+        
+        input[type="text"] { 
+            width: 100%; 
+            padding: 10px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px; 
+            font-size: 14px; 
+            outline: none; 
+            transition: 0.3s; 
+        }
+        input[type="text"]:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+
+        .links {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #64748b;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .links a {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .links a:hover { text-decoration: underline; }
+
+        .submit-btn { 
+            width: 100%; 
+            padding: 14px; 
+            border: none; 
+            border-radius: 30px; 
+            background: linear-gradient(135deg, #00f2fe, #4facfe); 
+            color: #000; 
+            font-weight: 600; 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            margin-top: 10px;
+        }
+        .submit-btn:hover { transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>App Setup</h2>
+    <p>Connect services to enable Job Search & AI Agents</p>
+
+    <form action="/setup" method="POST">
+        
+        <!-- SECTION 1: SERPAPI -->
+        <div class="api-section">
+            <label for="api_key">1. SerpApi Key (For Job Listings)</label>
+            <input type="text" name="api_key" id="api_key" placeholder="Paste SerpApi Key here..." required>
+            
+            <div class="links">
+                <span>Don't have a key?</span>
+                <div>
+                    <a href="https://serpapi.com/users/sign_in" target="_blank">Login</a>
+                    <span style="margin:0 4px; color:#ccc;">|</span>
+                    <a href="https://serpapi.com/users/sign_up" target="_blank">Create Account</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: GEMINI AI -->
+        <div class="api-section">
+            <label for="gemini_key">2. Gemini API Key (For AI Agents)</label>
+            <input type="text" name="gemini_key" id="gemini_key" placeholder="Paste Gemini API Key here..." required>
+            
+            <div class="links">
+                <span>Free from Google</span>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank">Get API Key 🔑</a>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Save & Launch 🚀</button>
+    </form>
+</div>
+
+</body>
+</html>

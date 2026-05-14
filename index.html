@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume IT Job Matcher</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border-radius: 16px;
+            padding: 40px;
+            width: 420px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .card {
+            position: relative;
+            overflow: hidden;
+        }
+        .upload-box {
+            display: flex;              /* FIX */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 25px;
+            border: 2px dashed rgba(255,255,255,0.6);
+            border-radius: 12px;
+            padding:28px 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        .upload-box:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .upload-box input {
+            display: none;
+        }
+
+        .upload-icon {
+            font-size: 40px;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #e0e0e0;
+            min-height: 18px;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #00f2fe, #4facfe);
+            color: #000;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .loader {
+            display: none;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Resume Job Matcher</h2>
+    <p>Upload your resume and get suitable job roles instantly</p>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data" onsubmit="showLoader()">
+
+        <label class="upload-box">
+            <div class="upload-icon">📄</div>
+            <div>Click or Drag & Drop Resume</div>
+            <input type="file" name="resume" id="resume" required onchange="showFileName()">
+            <div class="file-name" id="fileName"></div>
+        </label>
+
+        <button type="submit">Find Suitable Jobs 🚀</button>
+
+        <div class="loader" id="loader">Analyzing resume & fetching jobs...</div>
+    </form>
+</div>
+
+<script>
+    function showFileName() {
+        const input = document.getElementById("resume");
+        const fileName = document.getElementById("fileName");
+
+        if (input.files.length > 0) {
+            fileName.textContent = input.files[0].name;
+        }
+    }
+
+    function showLoader() {
+        document.getElementById("loader").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
